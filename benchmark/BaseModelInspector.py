@@ -20,8 +20,8 @@ class BaseModelInspctor(metaclass=ABCMeta):
     def __init__(
             self,
             repeat_data,
-            model,
-            batch_num: int = 1,
+            device,
+            batch_num: int = 20,
             batch_size: int = 1,
             percentile: int = 95,
     ):
@@ -30,9 +30,10 @@ class BaseModelInspctor(metaclass=ABCMeta):
 
         self.percentile = percentile
 
+        self.device = device
+
         self.batch_num = batch_num
         self.batch_size = batch_size
-        self.model = model
 
         self.raw_data = repeat_data
         self.processed_data = self.data_preprocess(self.raw_data)

@@ -1,2 +1,5 @@
 # idea
 .idea/
+
+# notebook
+.ipynb_checkpoints/
