@@ -1,6 +1,8 @@
 from abc import ABC
 from typing import Any
 
+import copy
+
 import torch
 import json
 from torchvision import transforms
@@ -131,21 +133,27 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
 
         # Move the inputs to the desired device
         inputs = video_data["video"]
-        inputs = [i.to(self.device)[None, ...] for i in inputs]
+        if self.slowfast_alpha is not None:
+            inputs = [i.to(self.device)[None, ...] for i in inputs]
+        else:
+            inputs = inputs.to(self.device)
 
         return inputs
 
     def make_request(self, input_batch) -> Any:
-        return input_batch[0].copy()
+        return input_batch
 
     def infer(self, request):
-        # Pass the input clip through the model
-        # Warning: this method will change "request"
-        preds = self.model(request)
+        pred_classes = []
+        for data in request:
+            # Pass the input clip through the model
+            # Warning: this method will change "request"
+            preds = self.model(copy.deepcopy(data) if self.slowfast_alpha is not None else copy.deepcopy(data)[None, ...])
 
-        # Get the predicted classes
-        post_act = torch.nn.Softmax(dim=1)
-        preds = post_act(preds)
-        pred_classes = preds.topk(k=5).indices[0]
+            # Get the predicted classes
+            post_act = torch.nn.Softmax(dim=1)
+            preds = post_act(preds)
+            pred_class = preds.topk(k=5).indices[0]
+            pred_classes.append(pred_class)
 
         return pred_classes
