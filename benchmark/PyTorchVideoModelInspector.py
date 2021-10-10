@@ -27,7 +27,7 @@ class PackPathway(torch.nn.Module):
     """
     Transform for converting video frames as a list of tensors. 
     """
-    def __init__(self, alpha):
+    def __init__(self, alpha=None):
         super().__init__()
         self.alpha = alpha
         
@@ -44,14 +44,14 @@ class PackPathway(torch.nn.Module):
             )
             frame_list = [slow_pathway, fast_pathway]
             return frame_list
-        return frames
+        else:
+            return frames
 
 
 class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
     def __init__(
             self,
             repeat_data: str,
-            model: str,
             device: str,
             model_name: str,
             side_size: int, 
@@ -61,15 +61,11 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
             num_frames: int, 
             sampling_rate: int, 
             frames_per_second: int, 
-            num_clips: int, 
-            num_crops: int, 
             slowfast_alpha: int = None, 
             batch_num: int = 20,
             batch_size: int = 1,
             percentile: int = 95,
     ):
-        BaseModelInspctor.__init__(self, repeat_data, model, device, batch_num, batch_size, percentile)
-
         self.side_size = side_size
         self.mean =  mean
         self.std = std
@@ -78,8 +74,8 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
         self.sampling_rate = sampling_rate
         self.frames_per_second = frames_per_second
         self.slowfast_alpha = slowfast_alpha
-        self.num_clips = num_clips
-        self.num_crops = num_crops
+
+        BaseModelInspctor.__init__(self, repeat_data, device, batch_num, batch_size, percentile)
 
         self.model_name = model_name
 
@@ -101,9 +97,9 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
 
     def data_preprocess(self, raw_data):
         # 暂时只针对slowfast, x3d, slow
-        transforms = ApplyTransformToKey(
+        transform = ApplyTransformToKey(
             key='video', 
-            transforms=Compose(
+            transform=Compose(
                 [
                     UniformTemporalSubsample(self.num_frames), 
                     Lambda(lambda x: x / 255.0), 
@@ -112,7 +108,7 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
                         size=self.side_size
                     ), 
                     CenterCropVideo(crop_size=self.crop_size if self.slowfast_alpha is not None else (self.crop_size, self.crop_size)), 
-                    PackPathway(self.slowfast_alpha)
+                    PackPathway(alpha=self.slowfast_alpha)
                 ]
             )
         )
@@ -131,20 +127,21 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
         video_data = video.get_clip(start_sec=start_sec, end_sec=end_sec)
 
         # Apply a transform to normalize the video input
-        video_data = transforms(video_data)
+        video_data = transform(video_data)
 
         # Move the inputs to the desired device
         inputs = video_data["video"]
-        inputs = inputs.to(self.device)
+        inputs = [i.to(self.device)[None, ...] for i in inputs]
 
         return inputs
 
     def make_request(self, input_batch) -> Any:
-        return super().make_request(input_batch)
+        return input_batch[0].copy()
 
     def infer(self, request):
         # Pass the input clip through the model
-        preds = self.model(request[None, ...])
+        # Warning: this method will change "request"
+        preds = self.model(request)
 
         # Get the predicted classes
         post_act = torch.nn.Softmax(dim=1)

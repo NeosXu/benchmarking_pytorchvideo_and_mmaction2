@@ -119,7 +119,7 @@ class BaseModelInspctor(metaclass=ABCMeta):
         all_data_throughput = (self.batch_size * self.batch_num) / (pass_end_time - pass_start_time)
         custom_percentile = np.percentile(self.latencies, self.percentile)
 
-        return self.print_results(all_data_latency, all_data_throughput, custom_percentile)
+        return self.print_results(all_data_throughput, all_data_latency, custom_percentile)
 
     def print_results(
             self,
