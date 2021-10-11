@@ -1,0 +1,212 @@
+==================[MMAction2]==================
+==================[mmaction2_tsn]==================
+ latency: 3.0073 sec throughput: 0.3325 req/sec
+ latency: 3.0289 sec throughput: 0.3302 req/sec
+ latency: 2.9786 sec throughput: 0.3357 req/sec
+ latency: 3.0023 sec throughput: 0.3331 req/sec
+ latency: 2.9792 sec throughput: 0.3357 req/sec
+ latency: 2.9908 sec throughput: 0.3344 req/sec
+ latency: 2.9926 sec throughput: 0.3342 req/sec
+ latency: 3.0218 sec throughput: 0.3309 req/sec
+ latency: 3.0496 sec throughput: 0.3279 req/sec
+ latency: 3.0034 sec throughput: 0.3330 req/sec
+ latency: 3.0481 sec throughput: 0.3281 req/sec
+ latency: 3.0359 sec throughput: 0.3294 req/sec
+ latency: 2.9772 sec throughput: 0.3359 req/sec
+ latency: 3.0437 sec throughput: 0.3285 req/sec
+ latency: 3.0380 sec throughput: 0.3292 req/sec
+ latency: 3.0283 sec throughput: 0.3302 req/sec
+ latency: 3.0243 sec throughput: 0.3307 req/sec
+ latency: 3.0287 sec throughput: 0.3302 req/sec
+ latency: 3.0345 sec throughput: 0.3295 req/sec
+ latency: 2.9598 sec throughput: 0.3379 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 60.283334493637085 s
+total throughput: 0.33176665106524594 req/sec
+50th-percentile latency: 3.023046374320984 s
+95th-percentile latency: 3.0481680393218995 s
+99th-percentile latency: 3.049307413101196 s
+completed at 2021-10-10 12:08:55.976094
+==================[mmaction2_slowfast]==================
+ latency: 23.4622 sec throughput: 0.0426 req/sec
+ latency: 23.7120 sec throughput: 0.0422 req/sec
+ latency: 23.5520 sec throughput: 0.0425 req/sec
+ latency: 23.5582 sec throughput: 0.0424 req/sec
+ latency: 23.6801 sec throughput: 0.0422 req/sec
+ latency: 23.7635 sec throughput: 0.0421 req/sec
+ latency: 23.5151 sec throughput: 0.0425 req/sec
+ latency: 23.7994 sec throughput: 0.0420 req/sec
+ latency: 23.3427 sec throughput: 0.0428 req/sec
+ latency: 23.3798 sec throughput: 0.0428 req/sec
+ latency: 23.4931 sec throughput: 0.0426 req/sec
+ latency: 23.5257 sec throughput: 0.0425 req/sec
+ latency: 23.5486 sec throughput: 0.0425 req/sec
+ latency: 23.5482 sec throughput: 0.0425 req/sec
+ latency: 23.5652 sec throughput: 0.0424 req/sec
+ latency: 23.7187 sec throughput: 0.0422 req/sec
+ latency: 23.3678 sec throughput: 0.0428 req/sec
+ latency: 23.6810 sec throughput: 0.0422 req/sec
+ latency: 23.4133 sec throughput: 0.0427 req/sec
+ latency: 23.5463 sec throughput: 0.0425 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 471.18438839912415 s
+total throughput: 0.04244622804238303 req/sec
+50th-percentile latency: 23.548418045043945 s
+95th-percentile latency: 23.76531049013138 s
+99th-percentile latency: 23.79255851984024 s
+completed at 2021-10-10 12:24:34.630576
+==================[mmaction2_x3d]==================
+ latency: 8.5056 sec throughput: 0.1176 req/sec
+ latency: 8.5387 sec throughput: 0.1171 req/sec
+ latency: 8.4278 sec throughput: 0.1187 req/sec
+ latency: 8.7013 sec throughput: 0.1149 req/sec
+ latency: 8.4907 sec throughput: 0.1178 req/sec
+ latency: 8.5128 sec throughput: 0.1175 req/sec
+ latency: 8.4243 sec throughput: 0.1187 req/sec
+ latency: 8.4679 sec throughput: 0.1181 req/sec
+ latency: 8.6135 sec throughput: 0.1161 req/sec
+ latency: 8.5136 sec throughput: 0.1175 req/sec
+ latency: 8.5740 sec throughput: 0.1166 req/sec
+ latency: 8.5173 sec throughput: 0.1174 req/sec
+ latency: 8.5413 sec throughput: 0.1171 req/sec
+ latency: 8.4622 sec throughput: 0.1182 req/sec
+ latency: 8.5775 sec throughput: 0.1166 req/sec
+ latency: 8.4368 sec throughput: 0.1185 req/sec
+ latency: 8.5569 sec throughput: 0.1169 req/sec
+ latency: 8.5468 sec throughput: 0.1170 req/sec
+ latency: 8.5271 sec throughput: 0.1173 req/sec
+ latency: 8.6767 sec throughput: 0.1153 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 170.62421369552612 s
+total throughput: 0.11721665739476701 req/sec
+50th-percentile latency: 8.522211909294128 s
+95th-percentile latency: 8.677939295768738 s
+99th-percentile latency: 8.696611762046814 s
+completed at 2021-10-10 12:28:55.482727
+==================[mmaction2_slowonly]==================
+ latency: 3.9508 sec throughput: 0.2531 req/sec
+ latency: 3.9863 sec throughput: 0.2509 req/sec
+ latency: 4.0309 sec throughput: 0.2481 req/sec
+ latency: 4.0211 sec throughput: 0.2487 req/sec
+ latency: 4.0254 sec throughput: 0.2484 req/sec
+ latency: 4.0118 sec throughput: 0.2493 req/sec
+ latency: 4.0196 sec throughput: 0.2488 req/sec
+ latency: 3.9349 sec throughput: 0.2541 req/sec
+ latency: 3.9910 sec throughput: 0.2506 req/sec
+ latency: 4.0146 sec throughput: 0.2491 req/sec
+ latency: 3.9818 sec throughput: 0.2511 req/sec
+ latency: 3.9901 sec throughput: 0.2506 req/sec
+ latency: 4.0193 sec throughput: 0.2488 req/sec
+ latency: 3.9536 sec throughput: 0.2529 req/sec
+ latency: 3.9812 sec throughput: 0.2512 req/sec
+ latency: 3.9931 sec throughput: 0.2504 req/sec
+ latency: 4.0059 sec throughput: 0.2496 req/sec
+ latency: 4.0155 sec throughput: 0.2490 req/sec
+ latency: 3.9769 sec throughput: 0.2515 req/sec
+ latency: 4.0107 sec throughput: 0.2493 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 79.92193627357483 s
+total throughput: 0.25024418742233034 req/sec
+50th-percentile latency: 3.9994837045669556 s
+95th-percentile latency: 4.025710964202881 s
+99th-percentile latency: 4.029866199493409 s
+completed at 2021-10-10 12:34:29.286592
+==================[PyTorchVideo]==================
+==================[pytorchvideo_slowfast]==================
+ latency: 0.1840 sec throughput: 5.4344 req/sec
+ latency: 0.1823 sec throughput: 5.4869 req/sec
+ latency: 0.1816 sec throughput: 5.5066 req/sec
+ latency: 0.1806 sec throughput: 5.5361 req/sec
+ latency: 0.1820 sec throughput: 5.4948 req/sec
+ latency: 0.1831 sec throughput: 5.4626 req/sec
+ latency: 0.1828 sec throughput: 5.4715 req/sec
+ latency: 0.1803 sec throughput: 5.5463 req/sec
+ latency: 0.1828 sec throughput: 5.4695 req/sec
+ latency: 0.1794 sec throughput: 5.5752 req/sec
+ latency: 0.1811 sec throughput: 5.5229 req/sec
+ latency: 0.1803 sec throughput: 5.5474 req/sec
+ latency: 0.1825 sec throughput: 5.4809 req/sec
+ latency: 0.1831 sec throughput: 5.4617 req/sec
+ latency: 0.1839 sec throughput: 5.4370 req/sec
+ latency: 0.1806 sec throughput: 5.5382 req/sec
+ latency: 0.1808 sec throughput: 5.5318 req/sec
+ latency: 0.1809 sec throughput: 5.5269 req/sec
+ latency: 0.1809 sec throughput: 5.5276 req/sec
+ latency: 0.1820 sec throughput: 5.4953 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 3.643767833709717 s
+total throughput: 5.488823907761987 req/sec
+50th-percentile latency: 0.1817859411239624 s
+95th-percentile latency: 0.1839295983314514 s
+99th-percentile latency: 0.18399718523025513 s
+completed at 2021-10-10 13:37:59.442801
+==================[pytorchvideo_x3d]==================
+ latency: 0.0338 sec throughput: 29.5684 req/sec
+ latency: 0.0328 sec throughput: 30.4473 req/sec
+ latency: 0.0355 sec throughput: 28.1824 req/sec
+ latency: 0.0323 sec throughput: 31.0046 req/sec
+ latency: 0.0356 sec throughput: 28.1089 req/sec
+ latency: 0.0321 sec throughput: 31.1504 req/sec
+ latency: 0.0360 sec throughput: 27.7478 req/sec
+ latency: 0.0312 sec throughput: 32.0416 req/sec
+ latency: 0.0343 sec throughput: 29.1423 req/sec
+ latency: 0.0335 sec throughput: 29.8767 req/sec
+ latency: 0.0335 sec throughput: 29.8638 req/sec
+ latency: 0.0340 sec throughput: 29.3879 req/sec
+ latency: 0.0375 sec throughput: 26.6920 req/sec
+ latency: 0.0314 sec throughput: 31.8658 req/sec
+ latency: 0.0324 sec throughput: 30.8298 req/sec
+ latency: 0.0381 sec throughput: 26.2799 req/sec
+ latency: 0.0342 sec throughput: 29.2527 req/sec
+ latency: 0.0349 sec throughput: 28.6890 req/sec
+ latency: 0.0313 sec throughput: 31.9627 req/sec
+ latency: 0.0360 sec throughput: 27.7899 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 0.6837842464447021 s
+total throughput: 29.248992067291514 req/sec
+50th-percentile latency: 0.03392374515533447 s
+95th-percentile latency: 0.037493753433227535 s
+99th-percentile latency: 0.03794022560119629 s
+completed at 2021-10-10 13:38:01.190227
+==================[pytorchvideo_slow]==================
+ latency: 0.1226 sec throughput: 8.1536 req/sec
+ latency: 0.1200 sec throughput: 8.3347 req/sec
+ latency: 0.1206 sec throughput: 8.2943 req/sec
+ latency: 0.1196 sec throughput: 8.3593 req/sec
+ latency: 0.1203 sec throughput: 8.3138 req/sec
+ latency: 0.1220 sec throughput: 8.1977 req/sec
+ latency: 0.1207 sec throughput: 8.2819 req/sec
+ latency: 0.1212 sec throughput: 8.2513 req/sec
+ latency: 0.1207 sec throughput: 8.2870 req/sec
+ latency: 0.1204 sec throughput: 8.3079 req/sec
+ latency: 0.1205 sec throughput: 8.2995 req/sec
+ latency: 0.1220 sec throughput: 8.1979 req/sec
+ latency: 0.1208 sec throughput: 8.2784 req/sec
+ latency: 0.1203 sec throughput: 8.3114 req/sec
+ latency: 0.1180 sec throughput: 8.4729 req/sec
+ latency: 0.1190 sec throughput: 8.4043 req/sec
+ latency: 0.1189 sec throughput: 8.4075 req/sec
+ latency: 0.1197 sec throughput: 8.3554 req/sec
+ latency: 0.1187 sec throughput: 8.4274 req/sec
+ latency: 0.1183 sec throughput: 8.4558 req/sec
+
+
+total batches: 20, batch_size: 1
+total latency: 2.410461902618408 s
+total throughput: 8.297164945139617 req/sec
+50th-percentile latency: 0.12034177780151367 s
+95th-percentile latency: 0.12201799154281616 s
+99th-percentile latency: 0.12252009153366089 s
+completed at 2021-10-10 13:42:24.154360
