@@ -5,16 +5,17 @@ from typing import Any
 import numpy as np
 
 
-class BaseModelInspctor(metaclass=ABCMeta):
+class BaseModelInspector(metaclass=ABCMeta):
     """
     A class for running the model inference with metrics testing. User can
     call the the method to run and test the model and return the tested
     latency and throughput.
     Args:
+        repeat_data: data unit to repeat.
+        device: the desired device, e.g., "cuda", "cpu", etc.
         batch_num: the number of batches you want to run
         batch_size: batch size you want
-        repeat_data: data unit to repeat.
-        percentile: The SLA percentile. Default is 95.
+        percentile: Default is 30.
     """
 
     def __init__(
@@ -23,7 +24,7 @@ class BaseModelInspctor(metaclass=ABCMeta):
             device,
             batch_num: int = 20,
             batch_size: int = 1,
-            percentile: int = 95,
+            percentile: int = 30,
     ):
         self.throughput_list = []
         self.latencies = []
@@ -146,7 +147,7 @@ class BaseModelInspctor(metaclass=ABCMeta):
         print(f'50th-percentile latency: {percentile_50} s')
         print(f'95th-percentile latency: {percentile_95} s')
         print(f'99th-percentile latency: {percentile_99} s')
-        # print(f'{self.percentile}th-percentile latency: {custom_percentile} s')
+        print(f'{self.percentile}th-percentile latency: {custom_percentile} s')
         print(f'completed at {complete_time}')
 
         return {

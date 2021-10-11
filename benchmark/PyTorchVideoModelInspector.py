@@ -22,7 +22,7 @@ from typing import Dict
 
 import torchvision
 
-from benchmark.BaseModelInspector import BaseModelInspctor
+from benchmark.BaseModelInspector import BaseModelInspector
 
 
 class PackPathway(torch.nn.Module):
@@ -50,7 +50,28 @@ class PackPathway(torch.nn.Module):
             return frames
 
 
-class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
+class PyTorchVideoModelInspector(BaseModelInspector, ABC):
+    """
+    sub-class of BaseModelInspector for running PyTorchVideo's models inference with metrics testing.
+    User can call the the method to run and test the model and return the tested latency and 
+    throughput.
+    Args:
+        repeat_data: data unit to repeat.
+        device: the desired device, e.g., "cuda", "cpu", etc.
+        model_name: the name of model selected from model zoo
+        side_size: int, parameter of input transforms, specific to the model
+        mean: list, parameter of input transforms, specific to the model
+        std: list, parameter of input transforms, specific to the model
+        crop_size: int, parameter of input transforms, specific to the model
+        num_frames: int, parameter of input transforms, specific to the model
+        sampling_rate: int, parameter of input transforms, specific to the model
+        frames_per_second: int, parameter of input transforms, specific to the model
+        slowfast_alpha: int, default None, only set it when selecting slowfast model
+        batch_num: the number of batches you want to run
+        batch_size: batch size you want
+        percentile: Default is 30.
+    """
+
     def __init__(
             self,
             repeat_data: str,
@@ -66,7 +87,7 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
             slowfast_alpha: int = None, 
             batch_num: int = 20,
             batch_size: int = 1,
-            percentile: int = 95,
+            percentile: int = 30,
     ):
         self.side_size = side_size
         self.mean =  mean
@@ -77,18 +98,21 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
         self.frames_per_second = frames_per_second
         self.slowfast_alpha = slowfast_alpha
 
-        BaseModelInspctor.__init__(self, repeat_data, device, batch_num, batch_size, percentile)
+        BaseModelInspector.__init__(self, repeat_data, device, batch_num, batch_size, percentile)
 
         self.model_name = model_name
 
         self.model = self.__load_model()
 
     def __load_model(self):
+        """Load model selected from model zoo"""
+        # Remove this may cause a bug
         # This is a bug introduced in pytorch 1.9
-        # 这个bug似乎只会出现在colab上
+        # This bug seems to only appear on colab
         # https://stackoverflow.com/questions/68901236/urllib-error-httperror-http-error-403-rate-limit-exceeded-when-loading-resnet1
         torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
-        # 代码默认主分支是master，github最近的默认主分支都从master迁移到了main
+        # remove main may cause bug
+        # the default may be master, but recently, the default branch of github migrate to main
         model = torch.hub.load("facebookresearch/pytorchvideo:main", model=self.model_name, pretrained=True)
 
         # Set to eval mode and move to desired device
@@ -98,7 +122,8 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
         return model
 
     def data_preprocess(self, raw_data):
-        # 暂时只针对slowfast, x3d, slow
+        # transform is specific to model
+        # I am not sure if this process is applicable to models other than slowfast, x3d and slow
         transform = ApplyTransformToKey(
             key='video', 
             transform=Compose(
@@ -145,6 +170,8 @@ class PyTorchVideoModelInspector(BaseModelInspctor, ABC):
 
     def infer(self, request):
         pred_classes = []
+        # request contains a batch of video
+        # but the method seems to require a single video
         for data in request:
             # Pass the input clip through the model
             # Warning: this method will change "request"
