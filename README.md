@@ -76,11 +76,11 @@ So I gave up temporarily
 ### The latency and throughput of MMAction2 slowonly
 ![mmaction2_slowonly](results/mmaction2_slowonly.jpg)
 ### The latency and throughput of PyTorchVideo slowfast
-![PyTorchVideo_slowfast](results/PyTorchVideo_slowfast.jpg)
+![PyTorchVideo_slowfast](results/pytorchvideo_slowfast.jpg)
 ### The latency and throughput of PyTorchVideo x3d
-![PyTorchVideo_x3d](results/PyTorchVideo_x3d.jpg)
+![PyTorchVideo_x3d](results/pytorchvideo_x3d.jpg)
 ### The latency and throughput of PyTorchVideo slow
-![PyTorchVideo_slow](results/PyTorchVideo_slow.jpg)
+![PyTorchVideo_slow](results/pytorchvideo_slow.jpg)
 ### Comparison of percentile latency
 ![Comparison of percentile latency](results/comparison_of_percentile_latency.jpg)
 ### comparison of total latency
